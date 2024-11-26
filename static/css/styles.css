@@ -1,0 +1,257 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #7209b7;
+    font-family: 'Courier New', monospace;
+    color: #00ffff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex; /* Cambio a flex horizontal */
+    width: 90%; /* Ancho máximo */
+    max-width: 1200px; /* Máximo ancho */
+    gap: 40px; /* Espacio entre columnas */
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    width: 40%; /* Ancho de la columna izquierda */
+    max-height: 90vh; /* Altura máxima */
+}
+
+.right-column {
+    width: 60%; /* Ancho de la columna derecha */
+    display: flex;
+    flex-direction: column;
+}
+
+.tree-container {
+    flex-grow: 1;
+    overflow-y: auto; /* Scroll vertical si se desborda */
+    max-height: 500px;
+}
+
+.tree-container h2 {
+    font-size: 32px;
+    color: #ff6b6b; 
+    margin-bottom: 30px;
+    text-decoration: underline wavy #00ffff;
+}
+
+.node {
+    text-align: center;
+    padding: 5px;
+    margin: 15px auto;
+    background-color: #00ffff; 
+    border-radius: 0;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7209b7;
+    font-size: 20px;
+    font-weight: normal;
+    transform: skew(-15deg);
+    border: 3px solid #ff6b6b;
+}
+
+.node.operator {
+    background-color: #ff6b6b; 
+}
+
+.left, .right {
+    display: block;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.calculator {
+    background-color: #4a4a4a;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 0 #ff6b6b;
+    width: 250px;
+    border: 4px dotted #00ffff; 
+}
+
+input#expression {
+    display: block;
+    margin: 0 auto 20px;
+    width: 100%;
+    padding: 10px;
+    font-size: 24px;
+    border: 4px dotted #ff6b6b;
+    border-radius: 0;
+    text-align: center;
+    background-color: #7209b7;
+    color: #00ffff; 
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid #00ffff;
+    border-radius: 0;
+    background-color: #4a4a4a; 
+    color: #00ffff; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #00ffff; 
+    color: #7209b7; 
+    transform: rotate(5deg);
+}
+
+button:active {
+    transform: scale(0.9) rotate(-5deg);
+}
+
+.tree-btn {
+    grid-column: span 4; 
+    background-color: #ff6b6b; 
+    color: #7209b7;
+    font-weight: bold;
+}
+
+.tree-btn:hover {
+    background-color: #00ffff; 
+}
+
+.node-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.children {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.left, .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos existentes actualizados */
+.tree-container {
+    text-align: center;
+    flex: 1;
+    background-color: #4a4a4a;
+    border: 4px dotted #00ffff;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 10px 10px 0 #ff6b6b;
+    height: 400px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+/* Nuevos estilos para el árbol */
+.node-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.children {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 20px;
+}
+
+.children::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background-color: #00ffff;
+}
+
+.left::before, .right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 2px;
+    background-color: #00ffff;
+}
+
+.left::before {
+    right: 0;
+}
+
+.right::before {
+    left: 0;
+}
+
+/* Estilos para la tabla de tokens */
+.token-table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background-color: #4a4a4a;
+    border: 4px dotted #00ffff;
+}
+
+.token-table th, .token-table td {
+    padding: 10px;
+    border: 2px solid #00ffff;
+    text-align: center;
+}
+
+.token-table th {
+    background-color: #ff6b6b;
+    color: #4a4a4a;
+}
+
+.token-summary {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #4a4a4a;
+    border: 2px solid #00ffff;
+}
+
+/* Estilos para los nuevos botones */
+.memory-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.memory-buttons button {
+    background-color: #ff6b6b;
+    color: #4a4a4a;
+}
+
+.backspace-btn {
+    background-color: #ff6b6b !important;
+    font-weight: bold;
+}
